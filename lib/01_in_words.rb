@@ -46,7 +46,6 @@ class Fixnum
     elsif self < 100
       number = WORDS[self/10 * 10]
       number += " #{WORDS[self % 10]}"
-      number
     else
       magnitude = find_next_magnitude
       all_magnitudes = (self / magnitude).in_words + " " + MAGNITUDES[magnitude]
@@ -54,15 +53,12 @@ class Fixnum
         all_magnitudes + " " + (self % magnitude).in_words
       else
         all_magnitudes
-
       end
     end
   end
 
   def find_next_magnitude
     MAGNITUDES.keys.select { |magnitude| magnitude <= self }[-1]
-
   end
-
 
 end
